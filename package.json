@@ -1,0 +1,79 @@
+{
+  "name": "excel",
+  "version": "1.0.0",
+  "description": "Excell clone",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "start": "webpack-dev-server --open",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "server": "json-server --watch src/public/db.json --port 3004"
+  },
+  "browserslist": "> 0.25%, not dead",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kamlasa10/excel.git"
+  },
+  "keywords": [
+    "js",
+    "javscript",
+    "java"
+  ],
+  "author": "Vladik Batya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kamlasa10/excel/issues"
+  },
+  "homepage": "https://github.com/kamlasa10/excel#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-syntax-jsx": "^7.12.1",
+    "@babel/plugin-transform-modules-commonjs": "^7.10.4",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.12.5",
+    "@svgr/webpack": "^5.5.0",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "babel-preset-next": "^1.4.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.4.1",
+    "cross-env": "^7.0.3",
+    "css-loader": "^4.2.1",
+    "eslint": "^7.11.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-jest": "^24.1.0",
+    "eslint-plugin-react": "^7.21.5",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^4.3.0",
+    "jest": "^26.5.2",
+    "mini-css-extract-plugin": "^0.10.0",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.3",
+    "svg-url-loader": "^7.1.1",
+    "ts-loader": "^8.0.14",
+    "typescript": "^4.1.3",
+    "url-loader": "^4.1.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.10.4",
+    "axios": "^0.21.0",
+    "classnames": "^2.2.6",
+    "json-server": "^0.16.3",
+    "normalize.css": "^8.0.1",
+    "react-redux": "^7.2.2",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5",
+    "redux-form": "^8.3.7",
+    "redux-saga": "^1.1.3",
+    "redux-thunk": "^2.3.0"
+  }
+}
