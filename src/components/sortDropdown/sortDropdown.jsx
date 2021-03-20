@@ -6,15 +6,16 @@ const SortDropdown = memo(({items, onSortByClick}) => {
   const [activeFilter, setActiveFilter] = useState(items[0])
   const sortRef = useRef()
 
-  const onSortTextClickHanlder = () => {
+  const onSortTextClickHanlder = (e) => {
+    e.stopPropagation()
     setSortDisplay((value) => !value)
   }
 
-  console.log('render', 'sort')
-
   useEffect(() => {
     document.addEventListener('click', e => {
-      if(!e.path.includes(sortRef.current)) {
+      const path = e.path || (e.composedPath && e.composedPath());
+
+      if(!path.includes(sortRef.current)) {
         setSortDisplay(false)
       }
     })

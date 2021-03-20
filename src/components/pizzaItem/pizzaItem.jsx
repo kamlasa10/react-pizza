@@ -1,20 +1,44 @@
 import React, {useState} from 'react'
 import classNames from 'classnames'
 
-const PizzaItem = ({name, imageUrl, price, types, sizes}) => {
-  const availableTypes = ['тонкое', 'традиционное']
-  const availableSizes = [26, 30, 40]
+import {transformNumToStr} from '@/helpers/helpers';
 
+const availableTypes = ['тонкое', 'традиционное']
+const availableSizes = [26, 30, 40]
+
+const PizzaItem = ({name, imageUrl, price, types,
+                     sizes, addPizza, id, cartItems,
+                     totalItems
+}) => {
   const [activeType, setActiveType] = useState(types[0])
-  const [activeSize, setActiveSize] = useState(sizes[0])
+  const [activeSize, setActiveSize] = useState(sizes[0].size)
+  const [currentPrice, setCurrentPrice] = useState(price)
+  const [totalItemsEqualType, setTotalItemsEqualType] = useState(0)
 
   const onTypeClickHanlder = (i) => {
+    console.log(i)
     setActiveType(i)
   }
 
-  const onSizeClickHandler = (i) => {
-    setActiveSize(i)
+  const onSizeClickHandler = (sizeObj) => {
+    setCurrentPrice(Math.round(price * sizeObj.delta))
+    setActiveSize(sizeObj.size)
   }
+
+  const filterTotalItemsByFields = (size, type) => {
+    const idx = transformNumToStr(id)
+
+    if(cartItems[idx]?.sizes?.[activeSize]?.[availableTypes[type]]) {
+      setTotalItemsEqualType(cartItems[idx].sizes[size][availableTypes[type]].count)
+      return
+    }
+
+    setTotalItemsEqualType(0)
+  }
+
+  React.useEffect(() => {
+    filterTotalItemsByFields(activeSize, activeType)
+  }, [activeSize, activeType, totalItems])
 
   return (
     <div className="pizza-block">
@@ -37,15 +61,20 @@ const PizzaItem = ({name, imageUrl, price, types, sizes}) => {
           {availableSizes.map((size) => <li key={size}
                                                className={classNames({
                                                  active: activeSize === size,
-                                                 disabled: !sizes.includes(size)
+                                                 disabled: !sizes.find(item => item.size === size)
                                                })}
-                                               onClick={() => onSizeClickHandler(size)}
+                                               onClick={() => onSizeClickHandler(sizes.find(item => item.size === size))}
           >{size}</li>)}
         </ul>
       </div>
       <div className="pizza-block__bottom">
-        <div className="pizza-block__price">от {price} ₽</div>
-        <div className="button button--outline button--add">
+        <div className="pizza-block__price">от {currentPrice} ₽</div>
+        <div className="button button--outline button--add" onClick={() => addPizza({
+          name,
+          imageUrl,
+          price: currentPrice,
+          id
+        }, {size: activeSize, type: availableTypes[activeType]})}>
           <svg
             width="12"
             height="12"
@@ -59,7 +88,7 @@ const PizzaItem = ({name, imageUrl, price, types, sizes}) => {
             />
           </svg>
           <span>Добавить</span>
-          <i>2</i>
+          <i>{totalItemsEqualType}</i>
         </div>
       </div>
     </div>

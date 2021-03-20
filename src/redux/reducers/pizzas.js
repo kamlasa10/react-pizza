@@ -1,4 +1,4 @@
-import {SET_PIZZAS} from '@/redux/types/pizzas';
+import {SET_PIZZAS, SET_PIZZAS_BY_CATEGORY} from '@/redux/types/pizzas';
 
 const initialState = {
   items: [],
@@ -12,6 +12,10 @@ const pizzas = (state = initialState, action) => {
         ...state,
         items: action.payload,
         isLoaded: true
+      }
+    case SET_PIZZAS_BY_CATEGORY:
+      return  {
+        ...state
       }
     default:
       return state

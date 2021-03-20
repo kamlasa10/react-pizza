@@ -8,7 +8,6 @@ const Categories = memo(({items, onCategorySelected}) => {
     setActiveFilter(value)
     onCategorySelected(value)
   }
-  console.log('rerender', 'category')
 
   const getClassNames = (isAll = true, value = null) => {
     if(isAll) {

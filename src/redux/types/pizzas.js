@@ -1,1 +1,2 @@
 export const SET_PIZZAS = 'SET_PIZZAS'
+export const SET_PIZZAS_BY_CATEGORY = 'SET_PIZZAS_BY_CATEGORY'

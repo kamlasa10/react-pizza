@@ -11,7 +11,7 @@ import {useDispatch} from 'react-redux';
 import {setPizzas} from '@/redux/actions/pizzas';
 
 const App = () => {
-
+  
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const App = () => {
       <Header/>
       <div className="content">
         <Route path="/" exact component={Home} />
-        <Route path="/Cart" exact component={Cart} />
+        <Route path="/cart" exact component={Cart} />
       </div>
     </div>
   )

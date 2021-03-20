@@ -20,7 +20,8 @@
     "no-invalid-this": "off",
     "no-case-declarations": "off",
     "react/prop-types": "off",
-    "react/display-name": "off"
+    "react/display-name": "off",
+    "no-unused-vars":"off"
   },
   "plugins": ["jest"],
   "extends": ["eslint:recommended", "plugin:react/recommended"]
